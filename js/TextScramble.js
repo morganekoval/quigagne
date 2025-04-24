@@ -76,10 +76,10 @@ const fx = new TextScramble(el);
 
 async function addPlayer(i) {
   const tmp = `<div id="n${i+1}" class="ldb notwinner">
-                        <span class="title invisible">
-                          QUI GAGNE ? </span>
-                        <span>${leaderboard[i][0]}</span>
-                        <span class="score">${leaderboard[i][1]}</span>
+                        <div class="title invisible">
+                          QUI GAGNE ? </div>
+                        <div class="player">${leaderboard[i][0]}</div>
+                        <div class="score">${leaderboard[i][1]}</div>
                       </div>`;
   setTimeout(() => document.getElementById("title-holder").innerHTML+=tmp, 150*i);
   setTimeout(() => document.getElementById(`n${i}`).classList.remove("notwinner"), 150*i);
@@ -93,30 +93,20 @@ let counter = 0
       setTimeout(next, 50)
     })
   } catch (error) {
-    el.classList.add("textdone");
 
-    document.getElementById("n1").innerHTML += `<span class="score">${leaderboard[0][1]}</span>`
+    document.getElementById("n1").innerHTML += `<div class="score">${leaderboard[0][1]}</div>`;
+    const scorewinner = document.querySelector(`#n1 div.score`);
+    // const scorepos = document.querySelector(`#n1 div.score`).getBoundingClientRect();
+    document.getElementById("n1").classList.add("header");
+    // scorewinner.style.position = `fixed`;
+    // scorewinner.style.width = "100%";
+    // scorewinner.style.objectPosition = `left ${scorepos.x}px top ${scorepos.y}px`;
     // const th = document.getElementById("title-holder");
     for (var i = 1 ; i < leaderboard.length ; i++) {
       addPlayer(i);
-      // setTimeout(addPlayer(i),50);
-      // const tmp = `<div id="n${i}" class="ldb notwinner">
-      //                   <span class="title invisible">
-      //                     QUI GAGNE ? </span>
-      //                   <span>${leaderboard[i][0]}</span>
-      //                   <span class="score">${leaderboard[i][1]}</span>
-      //                 </div>`;
-      // const n = i;
-      // // th.innerHTML += `<div id="n${i}" class="ldb notwinner">
-      // //                   <span class="title invisible">
-      // //                     QUI GAGNE ? </span>
-      // //                   <span>${leaderboard[i][0]}</span>
-      // //                   <span class="score">${leaderboard[i][1]}</span>
-      // //                 </div>`;
-      // setTimeout(() => th.innerHTML+=tmp, 1000*i);
-
-
     }
+
+    console.log(scorepos);
   }
     counter = (counter + 1);
   }

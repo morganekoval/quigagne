@@ -2,12 +2,34 @@
 
 body {
   font-family: "Special Gothic Expanded One", sans-serif;
-  margin-top: 20px;
+/*  margin-top: 20px;*/
 }
 
-#title-holder span{
-  padding-right :10px;
+.big {
+  font-size: 50px;
+  text-align: justify;
+  text-justify: auto;
+  margin:10px;
 }
+
+#n1 {
+  margin-left:0;
+  padding-top:20px;
+}
+
+.header {
+/*  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top:0;
+/*  position: fixed;*/
+  background-color: white;
+  z-index: 2;
+}
+
+#title-holder div {
+  margin-right:20px;
+}
+
 #title-holder {
   height: 100%;
   width: 100%;
@@ -16,37 +38,32 @@ body {
   display: flex;*/
   display: flex;
   flex-direction: column;
-  font-size: 3vw;
+  font-size: 3em;
 }
 
-#winner {
+/*#winner {
   font-weight: 100;
-}
+}*/
 
 /*.dud {
   color: #757575;
 }*/
 
-/*.textdone {
-  color: red;
+.title {
+  border : 1px solid black;
+  border-radius: 2px;
+  padding: 0px 5px;
 }
 
-.neon {
-  margin: 1rem auto;
-  animation: neon 1s ease infinite;
+.title:hover {
+  background-color:#000000;
+  color: white;
+  background-image:linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+  background-repeat:no-repeat;
+  background-size: 200% 100%; 
+  transition:background-size 1s, background-color 1s;
 }
 
-@keyframes neon {
-    0%,
-    100% {
-        text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
-        color: #f5efcb;
-    }
-    50% {
-        text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
-        color: #eda0d3;
-    }
-}*/
 
 .invisible {
   visibility: hidden;
@@ -54,14 +71,18 @@ body {
 
 .score {
   color: orange;
-  justify-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
+/*  justify-self: flex-end;*/
+  flex-grow: 1;
 }
 
 .ldb {
-/*  width:100%;*/
+  width:100%;
 /*  justify-content: center;*/
 /*  align-items: center;*/
-/*  display: inline-flex;*/
+/*  justify-content: space-around;*/
+  display: inline-flex;
 }
 
 .notwinner {
@@ -69,10 +90,16 @@ body {
   animation: appear 1s ease;
 }
 
+.player:hover, .score:hover {
+  font-weight: 1000;
+/*  color:blue;*/
+}
+
 @keyframes appear {
-    0%{opacity:0},
-    50%{opacity:0.5}
-    100% {
-        opacity:1;
-    }
+  0%{opacity:0},
+  50%{opacity:0.5}
+  100% {
+      opacity:1;
+  }
+}
 
