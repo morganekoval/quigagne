@@ -30,7 +30,7 @@
             <div id="winner" class="player"> </div>
           </div>
         </div>
-        <div>
+        <!-- <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc justo odio, hendrerit id eleifend vel, condimentum sit amet sapien. Suspendisse nisi lectus, sodales in feugiat vitae, egestas sed urna. Maecenas tincidunt facilisis lacus, id maximus turpis ornare ac. Mauris a sagittis justo. Curabitur sodales dui ut tortor hendrerit, sed luctus felis molestie. Suspendisse egestas, eros quis mattis aliquet, ante nisl fermentum ligula, sed condimentum orci odio nec diam. Praesent ipsum turpis, consectetur non dui ut, sodales gravida felis. In hac habitasse platea dictumst. Integer libero lectus, auctor ut pellentesque in, gravida quis diam.
           Curabitur hendrerit viverra quam sit amet feugiat. Duis sed pellentesque diam. Nam lorem neque, interdum sit amet nunc a, hendrerit interdum diam. Quisque dolor dui, placerat ac accumsan vel, condimentum nec metus. Vestibulum blandit mauris eget augue tempus eleifend. Sed euismod aliquet ligula et molestie. Nunc bibendum lectus nec elit ullamcorper consectetur. Pellentesque id tincidunt tellus. Vestibulum ante tortor, viverra ut justo sed, consequat ultrices lacus. Aenean sodales semper erat eu eleifend. Ut nec dolor scelerisque, cursus mauris porttitor, porta leo. Ut pulvinar pretium arcu, quis porttitor nulla vulputate eget. Etiam pulvinar odio magna, in cursus tortor tincidunt non. Nulla bibendum vitae odio nec ullamcorper. Vivamus consequat non nunc quis blandit. Fusce eros odio, placerat eget diam a, aliquet cursus metus.
           Sed sagittis dolor in orci condimentum, sit amet fringilla augue ultrices. Maecenas nec tristique dui. Cras vitae est at orci accumsan tincidunt. Ut ut volutpat libero, quis maximus mauris. Nullam id vehicula lacus. Aliquam erat volutpat. In blandit ante ligula, at volutpat nunc varius efficitur. Proin nulla ipsum, vulputate tempus imperdiet at, sodales ac quam. Quisque quis molestie tortor, et venenatis odio. Vestibulum ac tellus eu mauris lobortis facilisis. Sed sit amet felis quam. Nam efficitur metus ipsum, vitae pharetra tellus dictum non. Ut congue non risus blandit maximus. Sed aliquet molestie cursus.
@@ -78,7 +78,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a ornare dolor, ut ultrices urna. Aliquam tristique consequat porttitor. Curabitur molestie rutrum rutrum. Vivamus in lorem luctus, consectetur ipsum sit amet, convallis tortor. Sed ut bibendum metus. Mauris consequat, enim quis hendrerit sollicitudin, diam justo molestie velit, nec accumsan risus ipsum in lacus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ornare felis vitae augue auctor pharetra. Nulla accumsan nunc id pulvinar consectetur.
 
           Sed hendrerit porttitor arcu, a consequat tellus aliquam vitae. Phasellus vel orci ac justo vulputate pharetra at id massa. Suspendisse mauris purus, venenatis ut enim ullamcorper, laoreet ornare purus. Suspendisse aliquet auctor rutrum. Cras in hendrerit magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam quis erat ante. Aliquam augue diam, cursus eget mi a, sollicitudin fermentum leo. Donec auctor venenatis nisi, ac mollis diam elementum non. Curabitur luctus, enim blandit scelerisque imperdiet, tellus felis aliquet lacus, ut ornare leo tortor vel ante. Phasellus sed aliquam orci. Nulla facilisi. In vel lacus a eros lacinia vulputate. Cras finibus ante eget enim luctus, nec interdum ligula scelerisque. Sed sagittis magna ut imperdiet laoreet. Praesent in ex vel erat pharetra ultricies dictum sit amet justo.
-        </div>
+        </div> -->
       </div>
 
       <!-- <div class="row">
@@ -166,6 +166,7 @@
       return regex.test(navigator.userAgent);
     }
 
+
     function isTooSmall() {
       const width = window.innerWidth;
       if (width < 1200) {
@@ -179,7 +180,7 @@
       </div>`;
     }
 
-    if (isMobile()) {
+    if (isMobile() or isTooSmall()) {
       overrideText();
     }
 
