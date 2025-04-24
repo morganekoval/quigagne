@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://unpkg.com/color.js@1.2.0/dist/color.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+    <title>Qui gagne ?</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./img/favicon.png">
+  </head>
+  <body>
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8" id="title-holder">
+          <div id="n1" class="ldb">
+            <span class="title">
+              QUI GAGNE ? </span>
+            <span id="winner"> </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-8 col-offset-2" id="canvas-holder">
+        </div>
+      </div> -->
+    </div>
+
+  </body>
+  <script src="./js/data.js"></script>
+  <script src="./js/TextScramble.js"></script>
+  <script type="text/javascript">
+
+    
+
+
+    // const winners = document.getElementById("winners");
+    // for (var player in players) {
+    //   winners.innerHTML += `<li class="content__container__list__item">${player}</li>`;
+    // }
+
+
+
+    // const canvasHolder = document.getElementById("canvas-holder");
+    // console.log(canvasHolder.getBoundingClientRect());
+    // const width = canvasHolder.getBoundingClientRect().width;
+    // const height = $(window).height()*0.9;
+
+    // // Create the SVG container.
+    // const svg = d3.create("svg")
+    //   .attr("width", width)
+    //   .attr("height", height)
+    //   .attr("style", "max-width: 100%; height: auto;");
+
+    // var keys = Object.keys(players);
+
+    // const dates = getDateSpan(LDATA);
+    // console.log(dates);
+    // var x = d3.scaleLinear()
+    //   .domain(d3.extent(allData,function(d){return d.date;}))
+    //   .range([ 0, width ]);
+    // svg.append("g")
+    //   .attr("transform", "translate(0," + height + ")")
+    //   .call(d3.axisBottom(x).ticks(dates.length));
+
+    // const minMax = getMinMaxScores(players);
+    // console.log(minMax);
+    // var y = d3.scaleLinear()
+    //   .domain([minMax[0], minMax[1]])
+    //   .range([ height, 0 ]);
+    // svg.append("g")
+    //   .call(d3.axisLeft(y));
+
+    // var color = d3.scaleOrdinal()
+    // .domain(keys)
+    // .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf']);
+
+    // var stackedData = d3.stack()
+    //   .offset(d3.stackOffsetSilhouette)
+    //   .keys(d3.union(allData.map(d => d.player)))
+    //   .value(([, group], key) => group.get(key).score)
+    //   (d3.index(allData, d => d.date, d => d.player));
+
+    // console.log(stackedData);
+
+    //   // svg.selectAll("mylayers")
+    //   //   .data(stackedData)
+    //   //   .enter()
+    //   //   .append("path")
+    //   //     .style("fill", function(d) { return color(d.key); })
+    //   //     .attr("d", d3.area()
+    //   //       .x(function(d, i) { return x[i]; })
+    //   //       .y0(function(d) { return Math.min(y(d),0); })
+    //   //       .y1(function(d) { return Math.max(y(d),0); })
+    //   //   )
+
+
+
+
+
+    // canvasHolder.append(svg.node());
+
+    
+  </script>
+
+</html>
