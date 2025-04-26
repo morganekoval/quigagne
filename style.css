@@ -5,6 +5,7 @@ body {
 /*  margin-top: 20px;*/
 }
 
+
 .big {
   font-size: 50px;
   text-align: justify;
@@ -17,20 +18,35 @@ body {
   padding-top:20px;
 }
 
+.activeshadow{
+  box-shadow: hsla(0 0% 0% / 0.1) 0 0.5rem 1rem;
+  transition-duration: 400ms;
+}
+
+#falseheader {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  transition: box-shadow 200ms cubic-bezier(0.33, 1, 0.68, 1);
+  background-color: white;
+}
+
 .header {
 /*  position: -webkit-sticky; /* for Safari */
   position: sticky;
   top:0;
 /*  position: fixed;*/
-  background-color: white;
-  z-index: 2;
+  
+  z-index: 3;
+  
+/*  gap: 1rem;*/
 }
 
-#title-holder div {
+#content-holder div {
   margin-right:20px;
 }
 
-#title-holder {
+#content-holder {
   height: 100%;
   width: 100%;
 /*  justify-content: center;
@@ -101,5 +117,14 @@ body {
   100% {
       opacity:1;
   }
+}
+
+#svg-holder {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: 2px;
+  animation: appear 1s ease;
+  font-size: 20px;
 }
 

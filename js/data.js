@@ -41,8 +41,11 @@ function treatAllData(data) {
 	}
 	for (var i = 0 ; i < allDates.length ; i++) {
 		for (var player in players) {
-			allData.push({date:allDates[i],player:player,score:players[player][i]});
+			allData.push({date:allDates[i],player:player,score:players[player][i],round:i});
 		}
+	}
+	for (var player in players) {
+		allData.push({date:undefined,player:player,score:players[player][allDates.length-1],round:allDates.length});
 	}
 	return [allData,players];
 }
@@ -96,9 +99,56 @@ function getLeaderboard(data) {
 	return items;
 }
 
+function filterByPlayer(data,playerName) {
+	var res = []
+	for (var i = 0 ; i < data.length ; i++) {
+		if (data[i].player == playerName) {
+			res.push(data[i]);
+		}
+	}
+	return res;
+}
+
+
+
 const DATA = `[
 	{
 		"date":"23/04/2025",
+		"games": [
+			{"Aurélien":204,
+			"Mani":-102,
+			"Barbara":-102,
+			"Moko":102,
+			"Alex":-102},
+			{"Aurélien":-140,
+			"Mani":-70,
+			"Barbara":70,
+			"Moko":70,
+			"Alex":70},
+			{"Aurélien":136,
+			"Mani":-136,
+			"Barbara":272,
+			"Moko":-136,
+			"Alex":-136},
+			{"Aurélien":-80,
+			"Mani":-80,
+			"Barbara":160,
+			"Moko":80,
+			"Alex":-80},
+			{"Aurélien":54,
+			"Mani":-54,
+			"Barbara":-54,
+			"Moko":108,
+			"Alex":-54},
+			{"Aurélien":-100,
+			"Mani":200,
+			"Barbara":-100,
+			"Moko":-100,
+			"Alex":100}
+		]
+	},
+	{
+		"date":"24/04/2025",
 		"games": [
 			{"Aurélien":204,
 			"Mani":-102,
@@ -155,3 +205,14 @@ const res = treatAllData(LDATA);
 const allData = res[0];
 const players = res[1];
 const leaderboard = getLeaderboard(players);
+console.log(leaderboard);
+console.log(allData);
+
+const ragebait = [`c'est ${leaderboard[0][0]} qui gagne mais tu me fais chier avec ton tout petit écran c'est bon regarde sur ton ordi avec une fenêtre de taille normale c'est quoi ton problème t'as besoin de prouver que t'es un nomade ou quoi t'es littéralement tout ce qui va pas avec notre génération on nous a donné toutes ces technologies pour que tu regardes des vidéos youtube sur ton smartphone à la merde`,
+				`bravo ${leaderboard[0][0]} la star par contre mon con tu crois que mon site est optimisé pour un écran de cette taille ? pourquoi tu vis la slow life comme un abruti ?`,
+				`c'est bon j'ai même pas envie de te dire qui gagne avec ton écran minuscule mets toi à jour autrement ça me regarde pas`,
+				`gros loser : toi`,
+				`c'est trop la honte d'essayer d'accéder à cette page avec un écran de cette taille comme si j'avais que ça à foutre de rendre mon site responsive excuse-moi de vivre en fait je pense (c'est ${leaderboard[0][0]} qui gagne)`,
+				`tellement dur de rester courtoise quand un plouc veut se niquer les yeux avec une mini fenêtre de merde non je ne peux pas t'afficher les résultats parce que le style de la page va être tout déglingué et ça me fait extrêmement chier de régler ce problème voilà c'est tout mais bravo à ${leaderboard[0][0]}`]
+
+

@@ -81,7 +81,7 @@ async function addPlayer(i) {
                         <div class="player">${leaderboard[i][0]}</div>
                         <div class="score">${leaderboard[i][1]}</div>
                       </div>`;
-  setTimeout(() => document.getElementById("title-holder").innerHTML+=tmp, 150*i);
+  setTimeout(() => document.getElementById("content-holder").innerHTML+=tmp, 150*i);
   setTimeout(() => document.getElementById(`n${i}`).classList.remove("notwinner"), 150*i);
 
 }
@@ -105,8 +105,25 @@ let counter = 0
     for (var i = 1 ; i < leaderboard.length ; i++) {
       addPlayer(i);
     }
+    setTimeout(() => document.getElementById(`n${leaderboard.length }`).classList.remove("notwinner"), 150*i);
 
-    console.log(scorepos);
+
+    setTimeout(() => createSVG(), 1000);
+
+
+    const headerheight = document.getElementById("n1").getBoundingClientRect().height;
+    const falseheader =  document.getElementById("falseheader");
+    falseheader.style.height = `${headerheight+18}px`;
+
+    window.addEventListener("scroll", (event) => {
+      let scroll = this.scrollY;
+      if (scroll > 10) {
+        falseheader.className = "activeshadow";
+      } else {
+        falseheader.classList.remove("activeshadow");
+      }
+    });
+
   }
     counter = (counter + 1);
   }
