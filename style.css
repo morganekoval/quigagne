@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
 body {
   font-family: "Special Gothic Expanded One", sans-serif;
+/*  font-family: "Cal Sans", sans-serif;*/
 /*  margin-top: 20px;*/
 }
 
@@ -126,5 +130,17 @@ body {
   border-radius: 2px;
   animation: appear 1s ease;
   font-size: 20px;
+}
+
+.line-text-player {
+/*  font-family: "Chakra Petch", sans-serif;*/
+/*  font-family: "Lexend", sans-serif;*/
+  font-weight: 200;
+}
+
+.dropdown {
+  top: 20px;
+  left: 20px;
+/*  position: fixed;*/
 }
 

@@ -8,6 +8,7 @@ class TextScramble {
     // this.chars = '!<>-_\\/[]{}—=+*^?#________'
     this.chars = 'qwertyuiopasdfghjklzxcvbnm!<>-_\\/[]{}—=+*^?#________'
     this.update = this.update.bind(this)
+    this.stopped = false;
   }
   setText(newText) {
     const oldText = this.el.innerText
@@ -32,33 +33,36 @@ class TextScramble {
     }
   }
   update() {
-    let output = ''
-    let complete = 0
-    for (let i = 0, n = this.queue.length; i < n; i++) {
-      let { from, to, start, end, char } = this.queue[i]
-      if (this.frame >= end) {
-        complete++
-        output += to
-      } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.28) {
-          char = this.randomChar()
-          this.queue[i].char = char
+    if (!this.stopped) {
+      let output = ''
+      let complete = 0
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i]
+        if (this.frame >= end) {
+          complete++
+          output += to
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar()
+            this.queue[i].char = char
+          }
+          output += `<span class="dud"> ${char}</span>`
+        } else {
+          output += from
         }
-        output += `<span class="dud"> ${char}</span>`
-      } else {
-        output += from
       }
-    }
-    this.el.innerHTML = output
-    if (complete === this.queue.length) {
-      this.resolve();
-    } else {
-      this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
+      this.el.innerHTML = output
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
     }
   }
   randomChar() {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
+  
   }
 }
 
@@ -72,7 +76,7 @@ for (var i = leaderboard.length-1 ; i >= 0 ; i--) {
 }
 
 const el = document.querySelector('#winner');
-const fx = new TextScramble(el);
+var fx = new TextScramble(el);
 
 async function addPlayer(i) {
   const tmp = `<div id="n${i+1}" class="ldb notwinner">
@@ -87,13 +91,14 @@ async function addPlayer(i) {
 }
 
 let counter = 0
-  const next = () => {
+  var next = () => {
     try {
     fx.setText(phrases[counter]).then(() => {
       setTimeout(next, 50)
     })
   } catch (error) {
-
+    fx.stopped = true;
+    next = () => {};
     document.getElementById("n1").innerHTML += `<div class="score">${leaderboard[0][1]}</div>`;
     const scorewinner = document.querySelector(`#n1 div.score`);
     // const scorepos = document.querySelector(`#n1 div.score`).getBoundingClientRect();
@@ -108,7 +113,7 @@ let counter = 0
     setTimeout(() => document.getElementById(`n${leaderboard.length }`).classList.remove("notwinner"), 150*i);
 
 
-    setTimeout(() => createSVG(), 1000);
+    setTimeout(() => createSVGTotalPlot(), 1000);
 
 
     const headerheight = document.getElementById("n1").getBoundingClientRect().height;
@@ -129,4 +134,10 @@ let counter = 0
   }
 
 
-next()
+// next();
+
+try {
+  next();
+} catch(error) {
+  fx = null;
+}
