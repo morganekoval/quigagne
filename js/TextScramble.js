@@ -114,6 +114,7 @@ let counter = 0
 
 
     setTimeout(() => createSVGTotalPlot(), 1000);
+    setTimeout(() => createProfilesDiv(), 1000);
 
 
     const headerheight = document.getElementById("n1").getBoundingClientRect().height;

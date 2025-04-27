@@ -115,6 +115,11 @@ body {
 /*  color:blue;*/
 }
 
+.player > a {
+  text-decoration: none;
+  color: black;
+}
+
 @keyframes appear {
   0%{opacity:0},
   50%{opacity:0.5}
@@ -143,4 +148,28 @@ body {
   left: 20px;
 /*  position: fixed;*/
 }
+
+.profile {
+  animation: appear 1s ease;
+  width: 100%;
+  
+}
+
+.stats {
+  display: flex;
+  justify-content: flex-start;
+  font-family: Lexend;
+  font-size: 20px;
+
+}
+
+.profile > h1 {
+  margin-top:10px;
+  width: 100%;
+}
+
+
+/*#profiles {
+  
+}*/
 
