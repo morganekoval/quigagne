@@ -1,21 +1,12 @@
-function treatAllData(data) {
-	var players = {};
-	for (var i = 0; i < data.length; i++) {
-		for (var j = 0 ; j < data[i]["games"].length ; j++) {
-			for (const[key,value] of Object.entries(data[i]["games"][j])) {
-				if (!(key in players)) {
-					players[key] = [0];
-					for (var k = 0 ; k <= i ; k++) {
-						players[key].push(0);
-					}
-				} else if (players[key].length <= i + 1) {
-					players[key].push(players[key][players[key].length-1])
-				}
-				players[key][i+1] += value;
-			}
-		}
-	}
-	return players;
+var colors = ["#E97C1D","#1530BA","#e83f6f","#2274a5","#32936f","#251f47","#BEB2C8","#df2935"];
+shuffleArray(colors);
+var colorsFor = {};
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 
 function treatAllData(data=LDATA) {
@@ -49,7 +40,10 @@ function treatAllData(data=LDATA) {
 			allData.push({date:allDates[i],player:player,score:players[player][i],round:i});
 		}
 	}
+	var k = 0;
 	for (var player in players) {
+		colorsFor[player] = colors[k];
+		k++;
 		allData.push({date:undefined,player:player,score:players[player][allDates.length-1],round:allDates.length});
 	}
 	return [allData,players];

@@ -22,6 +22,11 @@ function createProfilesDiv() {
 	for (var i = 0 ; i < leaderboard.length ; i++) {
 		addProfile(i);
 	}
+	const aProfile = document.getElementById(`profile-${leaderboard[0][0]}`);
+	var style = aProfile.currentStyle || window.getComputedStyle(aProfile);
+	for (var i = 0 ; i < leaderboard.length ; i++) {
+		document.getElementById(`profile-${leaderboard[i][0]}`).style.marginBottom = style.marginRight;
+	}
 }
 
 function addProfile(index) {

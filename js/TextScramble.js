@@ -78,7 +78,7 @@ for (var i = leaderboard.length-1 ; i >= 0 ; i--) {
 const el = document.querySelector('#winner');
 var fx = new TextScramble(el);
 
-async function addPlayer(i) {
+function addPlayer(i) {
   const tmp = `<div id="n${i+1}" class="ldb notwinner">
                         <div class="title invisible">
                           QUI GAGNE ? </div>
