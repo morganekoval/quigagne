@@ -38,6 +38,11 @@ function treatAllData(data=LDATA) {
 				players[key][i+1] += value;
 			}
 		}
+		for (var player in players) {
+			while (players[player].length <= i + 1) {
+				players[player].push(players[player][players[player].length-1]);
+			}
+		}
 	}
 	for (var i = 0 ; i < allDates.length ; i++) {
 		for (var player in players) {
@@ -74,12 +79,12 @@ function treatDataDate(index,data=LDATA,) {
 	}
 
 	for (var i = 0 ; i <= data[index]["games"].length ; i++) {
-		for (var player in players) {
+		for (var player in playersRaw) {
 			allDataRaw.push({date:new Date(rawDate[2],rawDate[1]-1,rawDate[0]),player:player,score:playersRaw[player][i],round:i});
 		}
 	}
 
-	for (var player in players) {
+	for (var player in playersRaw) {
 		allDataRaw.push({date:rawDate,player:player,score:playersRaw[player][playersRaw[player].length-1],round:data[index]["games"].length+1});
 	}
 
@@ -190,6 +195,61 @@ const DATA = `[
 			"Barbara":-100,
 			"Moko":-100,
 			"Alex":100}
+		]
+	},
+	{
+		"date":"27/04/2025",
+		"games": [
+			{"Barbara":114,
+			"Baptiste":-22,
+			"Romane":-72,
+			"Erwan":-72,
+			"Moko":52},
+			{"Barbara":-26,
+			"Baptiste":26,
+			"Romane":26,
+			"Erwan":26,
+			"Moko":-52},
+			{"Barbara":84,
+			"Baptiste":-84,
+			"Romane":-84,
+			"Erwan":-84,
+			"Moko":168},
+			{"Barbara":-156,
+			"Baptiste":-38,
+			"Romane":98,
+			"Erwan":48,
+			"Moko":48},
+			{"Barbara":-232,
+			"Baptiste":116,
+			"Romane":116,
+			"Erwan":-116,
+			"Moko":116},
+			{"Barbara":-52,
+			"Baptiste":-104,
+			"Romane":52,
+			"Erwan":52,
+			"Moko":52},
+			{"Barbara":94,
+			"Baptiste":-94,
+			"Romane":-94,
+			"Erwan":-94,
+			"Moko":188},
+			{"Barbara":120,
+			"Baptiste":-120,
+			"Romane":-120,
+			"Erwan":-120,
+			"Moko":240},
+			{"Barbara":-218,
+			"Baptiste":42,
+			"Romane":42,
+			"Erwan":42,
+			"Moko":92},
+			{"Barbara":444,
+			"Baptiste":-1776,
+			"Romane":444,
+			"Erwan":444,
+			"Moko":444}
 		]
 	}
 ]`;

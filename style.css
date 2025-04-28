@@ -17,6 +17,10 @@ body {
   margin:10px;
 }
 
+#leaderboard {
+  margin-right: 0!important;
+}
+
 #n1 {
   margin-left:0;
   padding-top:20px;
@@ -150,7 +154,7 @@ body {
 }
 
 .profile {
-  animation: appear 1s ease;
+/*  animation: appear 1s ease;*/
   width: 100%;
   
 }

@@ -19,8 +19,8 @@ class TextScramble {
       for (let i = 0; i < length; i++) {
         const from = oldText[i] || ''
         const to = newText[i] || ''
-        const start = Math.floor(Math.random() * 15)
-        const end = start + Math.floor(Math.random() * 15)
+        const start = Math.floor(Math.random() * 10)
+        const end = start + Math.floor(Math.random() * 10)
         this.queue.push({ from, to, start, end })
       }
       cancelAnimationFrame(this.frameRequest)
@@ -85,7 +85,7 @@ async function addPlayer(i) {
                         <div class="player">${leaderboard[i][0]}</div>
                         <div class="score">${leaderboard[i][1]}</div>
                       </div>`;
-  setTimeout(() => document.getElementById("content-holder").innerHTML+=tmp, 150*i);
+  setTimeout(() => document.getElementById("leaderboard").innerHTML+=tmp, 150*i);
   setTimeout(() => document.getElementById(`n${i}`).classList.remove("notwinner"), 150*i);
 
 }
@@ -113,8 +113,10 @@ let counter = 0
     setTimeout(() => document.getElementById(`n${leaderboard.length }`).classList.remove("notwinner"), 150*i);
 
 
-    setTimeout(() => createSVGTotalPlot(), 1000);
-    setTimeout(() => createProfilesDiv(), 1000);
+    // setTimeout(() => createSVGTotalPlot(), 1000);
+    // setTimeout(() => createProfilesDiv(), 1000);
+    // setTimeout(() => setPageElements(), 1000);
+    setPageElements();
 
 
     const headerheight = document.getElementById("n1").getBoundingClientRect().height;

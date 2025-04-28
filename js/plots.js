@@ -5,8 +5,10 @@ shuffleArray(colors);
 //         .interpolator(d3.interpolateInferno);
 
 const margin = {top: 20, right: 30, bottom: 0, left: 10};
-const height = window.innerHeight*0.8;
+const height = (window.innerHeight*0.8)-margin.top-margin.bottom;
 const width = document.getElementById("content-holder").getBoundingClientRect().width-margin.left-margin.right;
+// const height = window.innerHeight*0.8;
+// const width = document.getElementById("content-holder").getBoundingClientRect().width;
 
 
 function shuffleArray(array) {
@@ -18,23 +20,25 @@ function shuffleArray(array) {
 
 function createSVGTotalPlot() {
 
-    const contentHolder = document.getElementById("content-holder");
-    contentHolder.innerHTML+= `<div id="svg-holder"></div>`;
+    // const contentHolder = document.getElementById("content-holder");
+    // contentHolder.innerHTML+= `<div id="svg-holder"></div>`;
     
 
-    const margin = {top: 20, right: 30, bottom: 0, left: 10};
-    const height = window.innerHeight*0.8;
-    const width = contentHolder.getBoundingClientRect().width-margin.left-margin.right;
+    // const margin = {top: 20, right: 30, bottom: 0, left: 10};
+    // const height = window.innerHeight*0.8;
+    // const width = contentHolder.getBoundingClientRect().width-margin.left-margin.right;
 
     const svgHolder = document.getElementById("svg-holder");
 
 
     const svg = d3.create("svg")
+        // .attr("width", width)
+        // .attr("height", height)
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("style", "max-width: 100%; max-height: 100%;");
     // svg.append("g")
-    svg.attr("transform","translate(" + margin.left + "," + margin.top + ")");
+    // svg.attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
 
     var allDates = [];
@@ -74,7 +78,6 @@ function createSVGTotalPlot() {
     
     plotScoreEvolution(svg);
 
-
 }
 
 
@@ -99,7 +102,7 @@ function plotScoreEvolution(svg,data=allData) {
 
     var y= d3.scaleLinear()
         .domain([minMax[0]-100, minMax[1]+100])
-        .range([ height, 0 ]);
+        .range([ height-margin.bottom, margin.top ]);
 
 
     svg.append("line")

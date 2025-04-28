@@ -16,8 +16,9 @@ const scrollMaxValue = () => {
 };
 
 function createProfilesDiv() {
-	const contentHolder = document.getElementById("content-holder");
-	contentHolder.innerHTML += `<div id="profiles"></div>`
+	// console.log("truc");
+	// const contentHolder = document.getElementById("content-holder");
+	// contentHolder.innerHTML += `<div id="profiles"></div>`;
 	for (var i = 0 ; i < leaderboard.length ; i++) {
 		addProfile(i);
 	}
@@ -36,6 +37,9 @@ function addProfile(index) {
 							</div>
 						</div>`;
 	const headerName = document.querySelector(`#n${index+1} div.player`);
+	console.log(index+1);
+	console.log(playerName);
+	console.log(headerName);
 	headerName.innerHTML = `<a id="link-to-${playerName}" href="#profile-${playerName}">${playerName}</a>`;
 
 	document.getElementById(`link-to-${playerName}`).addEventListener("click", function(event) {
