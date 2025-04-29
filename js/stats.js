@@ -34,11 +34,15 @@ function addProfile(index) {
 
 	// TO BE CHANGED
 	const playerName = leaderboard[index][0];
-	profiles.innerHTML += `<div id="profile-${playerName}" class="profile">
+	profiles.innerHTML += `<div id="profile-${playerName}" class="profile bordered">
 							<h1>${playerName}</h1>
 							<div class="stats">
 								<div class="statName">SCORE</div>
 								<div class="statValue">${leaderboard[index][1]}</div>
+							</div>
+							<div class="stats">
+								<div class="statName">NOMBRE DE PARTIES</div>
+								<div class="statValue"><span>${allStats.players[playerName].nbGames}</span> <span class="substat">(${Math.round(allStats.players[playerName].nbGames/allStats.totalNbGames*100)}%)</span></div>
 							</div>
 						</div>`;
 	const headerName = document.querySelector(`#n${index+1} div.player`);
@@ -51,7 +55,7 @@ function addProfile(index) {
 		setTimeout(function() {
 			var scrollPosition = (window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop);
     		if (scrollPosition < scrollMaxValue()) {
-				window.scrollBy(0,-document.getElementById("falseheader").getBoundingClientRect().height-5);
+				window.scrollBy(0,-document.getElementById("falseheader").getBoundingClientRect().height-15);
 			}
 		},50);
 		

@@ -125,10 +125,15 @@ let counter = 0
 
     window.addEventListener("scroll", (event) => {
       let scroll = this.scrollY;
-      if (scroll > 10) {
-        falseheader.className = "activeshadow";
+      if (scroll > 5) {
+        // console.log(falseheader.className);
+        if ("activeshadow" !== falseheader.className) {
+          falseheader.className = "activeshadow";
+          document.getElementById('falseheader').innerHTML = `<div id="cuteline" class="middleline"></div>`;
+        }
       } else {
         falseheader.classList.remove("activeshadow");
+        document.getElementById('cuteline').className = "nomiddleline";
       }
     });
 

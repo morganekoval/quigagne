@@ -12,14 +12,17 @@ function shuffleArray(array) {
 function treatAllData(data=LDATA) {
 	var allData = [];
 	var players = {};
+	allStats = {players:{},totalNbGames:0};
 	var allDates = [new Date(2025,3,20)];
 	for (var i = 0; i < data.length; i++) {
 		var rawDate = data[i]["date"].split("/");
 		allDates.push(new Date(rawDate[2],rawDate[1]-1,rawDate[0]));
 		for (var j = 0 ; j < data[i]["games"].length ; j++) {
+			allStats.totalNbGames++;
 			for (const[key,value] of Object.entries(data[i]["games"][j])) {
 				if (!(key in players)) {
 					players[key] = [0];
+					allStats.players[key] = {"nbGames":0};
 					for (var k = 0 ; k <= i ; k++) {
 						players[key].push(0);
 					}
@@ -27,6 +30,7 @@ function treatAllData(data=LDATA) {
 					players[key].push(players[key][players[key].length-1])
 				}
 				players[key][i+1] += value;
+				allStats.players[key].nbGames++;
 			}
 		}
 		for (var player in players) {
@@ -46,6 +50,7 @@ function treatAllData(data=LDATA) {
 		k++;
 		allData.push({date:undefined,player:player,score:players[player][allDates.length-1],round:allDates.length});
 	}
+	console.log(allStats);
 	return [allData,players];
 }
 
@@ -265,6 +270,7 @@ const DATA = `[
 const LDATA = JSON.parse(DATA);
 console.log(LDATA);
 
+var allStats = {};
 const res = treatAllData(LDATA);
 var allData = res[0];
 var players = res[1];
