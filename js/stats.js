@@ -15,12 +15,26 @@ const scrollMaxValue = () => {
   return documentHeight - windowHeight;
 };
 
+function hoverOnName(i) {
+  document.getElementById(`n${i+1}`).addEventListener("mouseenter",() => {
+    const playerDiv = document.querySelector(`#n${i+1} div.player`);
+    playerDiv.innerHTML = i+1;
+    playerDiv.style.color = colorsFor[leaderboard[i][0]];
+  });
+  document.getElementById(`n${i+1}`).addEventListener("mouseleave",() => {
+    const playerDiv = document.querySelector(`#n${i+1} div.player`);
+    playerDiv.innerHTML = leaderboard[i][0];
+    playerDiv.style.color = "black";
+  });
+}
+
 function createProfilesDiv() {
 	// console.log("truc");
 	// const contentHolder = document.getElementById("content-holder");
 	// contentHolder.innerHTML += `<div id="profiles"></div>`;
 	for (var i = 0 ; i < leaderboard.length ; i++) {
 		addProfile(i);
+		hoverOnName(i);
 	}
 	const aProfile = document.getElementById(`profile-${leaderboard[0][0]}`);
 	var style = aProfile.currentStyle || window.getComputedStyle(aProfile);
@@ -35,7 +49,7 @@ function addProfile(index) {
 	// TO BE CHANGED
 	const playerName = leaderboard[index][0];
 	profiles.innerHTML += `<div id="profile-${playerName}" class="profile bordered">
-							<h1>${playerName}</h1>
+							<h1>${playerName} <span class="circleplayer" id="circle-${playerName}" style="background-color:${colorsFor[playerName]};"></span></h1>
 							<div class="stats">
 								<div class="statName">SCORE</div>
 								<div class="statValue">${leaderboard[index][1]}</div>

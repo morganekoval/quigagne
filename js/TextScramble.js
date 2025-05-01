@@ -86,9 +86,11 @@ function addPlayer(i) {
                         <div class="score">${leaderboard[i][1]}</div>
                       </div>`;
   setTimeout(() => document.getElementById("leaderboard").innerHTML+=tmp, 150*i);
+  setTimeout(() => hoverOnName(i), 200*i);
   setTimeout(() => document.getElementById(`n${i}`).classList.remove("notwinner"), 150*i);
-
 }
+
+
 
 let counter = 0
   var next = () => {

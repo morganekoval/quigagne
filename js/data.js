@@ -1,4 +1,4 @@
-var colors = ["#E97C1D","#1530BA","#e83f6f","#2274a5","#32936f","#251f47","#BEB2C8","#df2935"];
+var colors = ["#E97C1D","#1530BA","#e83f6f","#2274a5","#32936f","#251f47","#BEB2C8","#df2935", "#9000b3", "#9000b3","#F774B1"];
 shuffleArray(colors);
 var colorsFor = {};
 
