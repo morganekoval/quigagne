@@ -62,20 +62,40 @@ function treatDataDate(index,data=LDATA,) {
 	// var allDates = [new Date(2025,3,20)];
 
 	for (var j = 0 ; j < data[index]["games"].length ; j++) {
-		console.log(data[index]["games"][j])
 		for (const[key,value] of Object.entries(data[index]["games"][j])) {
 			if (!(key in playersRaw)) {
 				playersRaw[key] = [0];
-				for (var k = 0 ; k < j ; k++) {
-					playersRaw[key].push(playersRaw[key][playersRaw[key].length-1]);
-				}
-			} 
-			// else if (playersRaw[key].length <= j + 1) {
-			// 	playersRaw[key].push(playersRaw[key][playersRaw[key].length-1])
-			// }
-			playersRaw[key].push(playersRaw[key][playersRaw[key].length-1]+value);
+			}
 		}
 	}
+
+	const playersName = Object.keys(playersRaw);
+
+	for (var j = 0 ; j < data[index]["games"].length ; j++) {
+		for (var k = 0 ; k < playersName.length ; k++) {
+			if (playersName[k] in data[index]["games"][j]) {
+				playersRaw[playersName[k]].push(playersRaw[playersName[k]][playersRaw[playersName[k]].length-1]+data[index]["games"][j][playersName[k]]);
+			} else {
+				playersRaw[playersName[k]].push(playersRaw[playersName[k]][playersRaw[playersName[k]].length-1]);
+			}
+		}
+	}
+
+	// for (var j = 0 ; j < data[index]["games"].length ; j++) {
+	// 	console.log(data[index]["games"][j])
+	// 	for (const[key,value] of Object.entries(data[index]["games"][j])) {
+	// 		if (!(key in playersRaw)) {
+	// 			playersRaw[key] = [0];
+	// 			for (var k = 0 ; k < j ; k++) {
+	// 				playersRaw[key].push(playersRaw[key][playersRaw[key].length-1]);
+	// 			}
+	// 		} 
+	// 		// else if (playersRaw[key].length <= j + 1) {
+	// 		// 	playersRaw[key].push(playersRaw[key][playersRaw[key].length-1])
+	// 		// }
+	// 		playersRaw[key].push(playersRaw[key][playersRaw[key].length-1]+value);
+	// 	}
+	// }
 
 	for (var i = 0 ; i <= data[index]["games"].length ; i++) {
 		for (var player in playersRaw) {
@@ -249,6 +269,71 @@ const DATA = `[
 			"Romane":444,
 			"Erwan":444,
 			"Moko":444}
+		]
+	},
+	{
+		"date":"18/05/2025",
+		"games": [
+			{"Louise":-94,
+			"Aurélien":188,
+			"Alex":-94,
+			"Erwan":94,
+			"Moko":-94},
+			{"Louise":-50,
+			"Barbara":100,
+			"Alex":-50,
+			"Erwan":50,
+			"Moko":-50},
+			{"Louise":-60,
+			"Barbara":60,
+			"Aurélien":-60,
+			"Erwan":120,
+			"Moko":-60},
+			{"Alex":39,
+			"Barbara":-39,
+			"Aurélien":39,
+			"Erwan":39,
+			"Moko":-78},
+			{"Alex":236,
+			"Barbara":-236,
+			"Aurélien":-236,
+			"Erwan":-236,
+			"Louise":472},
+			{"Alex":74,
+			"Barbara":74,
+			"Aurélien":-74,
+			"Moko":-148,
+			"Louise":74},
+			{"Alex":140,
+			"Erwan":-140,
+			"Aurélien":-140,
+			"Moko":-140,
+			"Louise":280},
+			{"Alex":-180,
+			"Erwan":180,
+			"Barbara":-180,
+			"Moko":-180,
+			"Louise":360},
+			{"Aurélien":-42,
+			"Erwan":42,
+			"Barbara":42,
+			"Moko":-84,
+			"Alex":42},
+			{"Aurélien":-106,
+			"Erwan":106,
+			"Barbara":-106,
+			"Moko":212,
+			"Alex":-106},
+			{"Aurélien":-160,
+			"Erwan":-80,
+			"Barbara":80,
+			"Moko":80,
+			"Alex":80},
+			{"Aurélien":-150,
+			"Erwan":150,
+			"Barbara":-150,
+			"Moko":-150,
+			"Alex":300}
 		]
 	}
 ]`;

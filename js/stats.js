@@ -36,6 +36,10 @@ function createProfilesDiv() {
 		addProfile(i);
 		hoverOnName(i);
 	}
+
+	if (leaderboard.length%2 != 0) {
+		document.getElementById("profiles").innerHTML += `<div id="profile-null" class="profile bordered invisible"></div>`;
+	}
 	const aProfile = document.getElementById(`profile-${leaderboard[0][0]}`);
 	var style = aProfile.currentStyle || window.getComputedStyle(aProfile);
 	for (var i = 0 ; i < leaderboard.length ; i++) {

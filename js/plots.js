@@ -56,6 +56,7 @@ function createSVGTotalPlot() {
             allData = test[0];
             players = test[1];
         }
+        // console.log(players);
         d3.select("svg").selectAll("*").remove();
         plotScoreEvolution(d3.select("svg"));
     });
@@ -76,14 +77,15 @@ function plotScoreEvolution(svg,data=allData) {
 
     console.log(players);
     var keys = Object.keys(players);
+    // console.log(keys);
 
     var tickval = [];
-    for (var i = 1 ; i < players[leaderboard[0][0]].length ; i++) {
+    for (var i = 1 ; i < players[keys[0]].length ; i++) {
         tickval.push(i);
     }
 
     var x = d3.scaleLinear()
-        .domain([0,players[leaderboard[0][0]].length])
+        .domain([0,players[keys[0]].length])
         .range([ 0, width]);
     
 
@@ -114,7 +116,7 @@ function plotScoreEvolution(svg,data=allData) {
 
         var filtered = filterByPlayer(data,keys[i]);
 
-
+        console.log(filtered);
         const path = svg.append("path").attr("d",myline(filtered))
                                         .attr("id",`line-${keys[i]}`)
                                         .style("fill","none")
