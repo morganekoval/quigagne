@@ -52,6 +52,21 @@ function addProfile(index) {
 
 	// TO BE CHANGED
 	const playerName = leaderboard[index][0];
+	// profiles.innerHTML += `<div id="profile-${playerName}" class="profile bordered">
+	// 						<h1>${playerName} <span class="circleplayer" id="circle-${playerName}" style="background-color:${colorsFor[playerName]};"></span></h1>
+	// 						<div class="stats">
+	// 							<div class="statName">SCORE</div>
+	// 							<div class="statValue">${leaderboard[index][1]}</div>
+	// 						</div>
+	// 						<div class="stats">
+	// 							<div class="statName">NOMBRE DE PARTIES</div>
+	// 							<div class="statValue"><span>${allStats.players[playerName].nbGames}</span> <span class="substat">(${Math.round(allStats.players[playerName].nbGames/allStats.totalNbGames*100)}%)</span></div>
+	// 						</div>
+	// 						<div class="stats">
+	// 							<div class="statName">NOMBRE DE PRISES</div>
+	// 							<div class="statValue"><span>${allStats.players[playerName].nbAttacks}</span> <span class="substat">(${Math.round(allStats.players[playerName].nbAttacks/allStats.totalNbGames*100)}%)</span> dont <span class="greenstat">${allStats.players[playerName].includingSuccess}</span> <span class="substat">(${Math.round(allStats.players[playerName].includingSuccess/allStats.players[playerName].nbAttacks*100) || 0}%)</span> / <span class="redstat">${allStats.players[playerName].includingDefeat}</span> <span class="substat">(${Math.round(allStats.players[playerName].includingDefeat/allStats.players[playerName].nbAttacks*100) || 0}%)</span></div>
+	// 						</div>
+	// 					</div>`;
 	profiles.innerHTML += `<div id="profile-${playerName}" class="profile bordered">
 							<h1>${playerName} <span class="circleplayer" id="circle-${playerName}" style="background-color:${colorsFor[playerName]};"></span></h1>
 							<div class="stats">
@@ -61,6 +76,10 @@ function addProfile(index) {
 							<div class="stats">
 								<div class="statName">NOMBRE DE PARTIES</div>
 								<div class="statValue"><span>${allStats.players[playerName].nbGames}</span> <span class="substat">(${Math.round(allStats.players[playerName].nbGames/allStats.totalNbGames*100)}%)</span></div>
+							</div>
+							<div class="stats">
+								<div class="statName">NOMBRE DE PRISES</div>
+								<div class="statValue"><span>${allStats.players[playerName].nbAttacks}</span> <span class="substat">(${Math.round(allStats.players[playerName].nbAttacks/allStats.totalNbGames*100)}%)</span> / <span class="greenstat">${allStats.players[playerName].includingSuccess}</span>:<span class="redstat">${allStats.players[playerName].includingDefeat}</span></div>
 							</div>
 						</div>`;
 	const headerName = document.querySelector(`#n${index+1} div.player`);
@@ -81,3 +100,11 @@ function addProfile(index) {
 
 	});
 }
+
+
+
+
+
+
+
+

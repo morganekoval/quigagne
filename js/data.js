@@ -1,4 +1,4 @@
-var colors = ["#E97C1D","#1530BA","#e83f6f","#2274a5","#32936f","#251f47","#BEB2C8","#df2935", "#9000b3", "#9000b3","#F774B1"];
+var colors = ["#E97C1D","#1530BA","#e83f6f","#2274a5","#32936f","#251f47","#BEB2C8","#df2935", "#9000b3", "#9000b3","#F774B1","#00A6FB"];
 shuffleArray(colors);
 var colorsFor = {};
 
@@ -8,6 +8,52 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
+
+function attackWon(playerName,scores) {
+	const score = scores[playerName];
+	if (score <= 0) {
+		return false;
+	}
+	var nbSame = 0;
+	for (const[key,value] of Object.entries(scores)) {
+		if (key != playerName) {
+			if (value > 0) {
+				nbSame++;
+			}
+			if (value >= score) {
+				return false;
+			}
+		}
+	}
+	if (nbSame >= 2) {
+		return false;
+	}
+	return true;
+}
+
+function attackLost(playerName,scores) {
+	const score = scores[playerName];
+	if (score >= 0) {
+		return false;
+	}
+	var nbSame = 0;
+	for (const[key,value] of Object.entries(scores)) {
+		if (key != playerName) {
+			if (value < 0) {
+				nbSame++;
+			}
+			if (value <= score) {
+				return false;
+			}
+		}
+	}
+	if (nbSame >= 2) {
+		return false;
+	}
+	return true;
+}
+
 
 function treatAllData(data=LDATA) {
 	var allData = [];
@@ -22,7 +68,7 @@ function treatAllData(data=LDATA) {
 			for (const[key,value] of Object.entries(data[i]["games"][j])) {
 				if (!(key in players)) {
 					players[key] = [0];
-					allStats.players[key] = {"nbGames":0};
+					allStats.players[key] = {"nbGames":0,"nbAttacks":0,"includingSuccess":0,"includingDefeat":0};
 					for (var k = 0 ; k <= i ; k++) {
 						players[key].push(0);
 					}
@@ -31,6 +77,14 @@ function treatAllData(data=LDATA) {
 				}
 				players[key][i+1] += value;
 				allStats.players[key].nbGames++;
+				if (attackWon(key,data[i]["games"][j])) {
+					allStats.players[key].nbAttacks++;
+					allStats.players[key].includingSuccess++;
+				} else if (attackLost(key,data[i]["games"][j])) {
+					allStats.players[key].nbAttacks++;
+					allStats.players[key].includingDefeat++;
+				}
+
 			}
 		}
 		for (var player in players) {

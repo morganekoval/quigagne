@@ -285,6 +285,14 @@ body {
   color: gray;
 }
 
+.greenstat {
+  color: green;
+}
+
+.redstat {
+  color: red;
+}
+
 .circleplayer {
   border-radius: 50%;
   width: 20px;
