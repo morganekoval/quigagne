@@ -15,6 +15,42 @@ const scrollMaxValue = () => {
   return documentHeight - windowHeight;
 };
 
+// function checkAllToggles() {
+// 	for (var i = 0 ; i < leaderboard.length ; i++) {
+// 		togglePlayer
+// 	}
+// }
+
+function isToggled(playerName) {
+	try {
+		if (document.getElementById(`display${playerName}`).checked) {
+			return "";
+		}
+		return "invisible";
+	} catch(e) {
+		return "";
+	}
+}
+
+
+function togglePlayer(playerName) {
+	console.log(playerName);
+	const toggle = document.getElementById(`display${playerName}`).checked;
+	const line = document.getElementById(`line-${playerName}`);
+	const linetext = document.getElementById(`line-text-${playerName}`);
+	try {
+		if (toggle) {
+			line.classList.remove("invisible");
+			linetext.classList.remove("invisible");
+		} else {
+			line.classList.add("invisible");
+			linetext.classList.add("invisible");
+		}
+	} catch(e) {
+		console.log('player not displayed');
+	}
+}
+
 function hoverOnName(i) {
   document.getElementById(`n${i+1}`).addEventListener("mouseenter",() => {
     const playerDiv = document.querySelector(`#n${i+1} div.player`);
@@ -68,7 +104,7 @@ function addProfile(index) {
 	// 						</div>
 	// 					</div>`;
 	profiles.innerHTML += `<div id="profile-${playerName}" class="profile bordered">
-							<h1>${playerName} <span class="circleplayer" id="circle-${playerName}" style="background-color:${colorsFor[playerName]};"></span></h1>
+							<h1><span class="playernameh1"><span>${playerName}</span> <span class="circleplayer" id="circle-${playerName}" style="background-color:${colorsFor[playerName]};"></span></span><span class="checkdisplay"><input type="checkbox" id="display${playerName}" onclick="togglePlayer('${playerName}')" checked/></span></h1>
 							<div class="stats">
 								<div class="statName">SCORE</div>
 								<div class="statValue">${leaderboard[index][1]}</div>
@@ -94,11 +130,16 @@ function addProfile(index) {
     		if (scrollPosition < scrollMaxValue()) {
 				window.scrollBy(0,-document.getElementById("falseheader").getBoundingClientRect().height-15);
 			}
-		},50);
-		
-	    
+		},50);    
 
 	});
+
+	
+	// console.log(document.getElementById(`display${playerName}`));
+	// document.getElementById(`display${playerName}`).addEventListener("change", function(event) {
+	// 	console.log(this.checked);
+	// 	console.log('wsh');
+	// });
 }
 
 

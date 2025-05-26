@@ -119,6 +119,7 @@ function plotScoreEvolution(svg,data=allData) {
         console.log(filtered);
         const path = svg.append("path").attr("d",myline(filtered))
                                         .attr("id",`line-${keys[i]}`)
+                                        .attr("class",`${isToggled(keys[i])}`)
                                         .style("fill","none")
                                         .style("stroke",colorsFor[keys[i]])
                                         .style("stroke-width", 2);
@@ -136,6 +137,7 @@ function plotScoreEvolution(svg,data=allData) {
         svg.append("text")
                .append("textPath") //append a textPath to the text element
                .attr("id",`line-text-${keys[i]}`)
+               .attr("class",`${isToggled(keys[i])}`)
                .attr("class","line-text-player")
                .style("fill",colorsFor[keys[i]])
                 .attr("xlink:href", `#line-${keys[i]}`) //place the ID of the path here
