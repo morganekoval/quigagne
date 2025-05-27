@@ -45,6 +45,8 @@ function createSVGTotalPlot() {
 
     svgHolder.innerHTML += dropdownText;
 
+    // svgHolder.innerHTML += `<div class="plotOptions">${dropdownText}<span><input type="checkbox" id="detailed-option" name="detailed-option" value="détaillé" onclick="detailedPlot()"/><label for="detailed-option">détaillé</label></span></div>`;
+
     document.getElementById("choosedate").addEventListener("change", function(event){
         // console.log(event.target.value);
         const indexDate = parseInt(event.target.value);
@@ -71,6 +73,8 @@ function createSVGTotalPlot() {
     plotScoreEvolution(svg);
 
 }
+
+function detailedPlot() {}
 
 
 function plotScoreEvolution(svg,data=allData) {

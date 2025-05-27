@@ -243,7 +243,7 @@ body {
   flex: 1;
 /*  margin-top : 5px;*/
   margin-bottom: 5px;
-  padding: 5px 5px 10px 10px;
+  padding: 0px 5px 10px 15px;
   
 }
 
@@ -263,19 +263,22 @@ body {
 }
 
 .profile > h1 {
-  margin-top:10px;
+/*  margin-top:10px;*/
+  margin-bottom: 0px;
   width: 100%;
   display: inline-flex;
   justify-content: space-between;
 }
 
+
 .playernameh1 {
   display: inline-flex;
+/*  transform: translate(0px,-5px);*/
 }
 
 .checkdisplay {
   position: relative;
-  transform: translate(0%,-85%);
+  transform: translate(0%,-75%);
 }
 
 
@@ -314,4 +317,23 @@ body {
 /*  display: inline-block;*/
 }
 
+.playernameh1 > span:hover {
+  cursor: pointer;
+}
 
+/*h1:hover, h1:hover span {
+  cursor: pointer;
+}*/
+
+.plotOptions {
+  display: flex;
+  flex-direction: row;
+/*  max-width: 15%;*/
+  margin:10px;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.plotOptions > span {
+  display: inline-block;
+}

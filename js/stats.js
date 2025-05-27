@@ -15,11 +15,13 @@ const scrollMaxValue = () => {
   return documentHeight - windowHeight;
 };
 
-// function checkAllToggles() {
-// 	for (var i = 0 ; i < leaderboard.length ; i++) {
-// 		togglePlayer
-// 	}
-// }
+function newColorFor(playerName) {
+	const newColor = getRandomColor();
+	document.getElementById(`circle-${playerName}`).style.backgroundColor = newColor;
+	colorsFor[playerName] = newColor;
+	document.getElementById(`line-${playerName}`).style.stroke = newColor;
+	document.getElementById(`line-text-${playerName}`).style.fill = newColor;
+}
 
 function isToggled(playerName) {
 	try {
@@ -31,6 +33,15 @@ function isToggled(playerName) {
 		return "";
 	}
 }
+
+// function cursorPointer(change) {
+// 	// console.log(change);
+// 	// if (change) {
+// 	// 	document.getElementsByTagName("body")[0].style.cursor = "pointer";
+// 	// } else {
+// 	// 	document.getElementsByTagName("body")[0].style.cursor = "default";
+// 	// }
+// }
 
 
 function togglePlayer(playerName) {
@@ -104,7 +115,7 @@ function addProfile(index) {
 	// 						</div>
 	// 					</div>`;
 	profiles.innerHTML += `<div id="profile-${playerName}" class="profile bordered">
-							<h1><span class="playernameh1"><span>${playerName}</span> <span class="circleplayer" id="circle-${playerName}" style="background-color:${colorsFor[playerName]};"></span></span><span class="checkdisplay"><input type="checkbox" id="display${playerName}" onclick="togglePlayer('${playerName}')" checked/></span></h1>
+							<h1><span class="playernameh1" onclick="newColorFor('${playerName}')"><span>${playerName}</span> <span class="circleplayer" id="circle-${playerName}" style="background-color:${colorsFor[playerName]};"></span></span><span class="checkdisplay"><input type="checkbox" id="display${playerName}" onclick="togglePlayer('${playerName}')" checked/></span></h1>
 							<div class="stats">
 								<div class="statName">SCORE</div>
 								<div class="statValue">${leaderboard[index][1]}</div>
@@ -115,7 +126,7 @@ function addProfile(index) {
 							</div>
 							<div class="stats">
 								<div class="statName">NOMBRE DE PRISES</div>
-								<div class="statValue"><span>${allStats.players[playerName].nbAttacks}</span> <span class="substat">(${Math.round(allStats.players[playerName].nbAttacks/allStats.totalNbGames*100)}%)</span> / <span class="greenstat">${allStats.players[playerName].includingSuccess}</span>:<span class="redstat">${allStats.players[playerName].includingDefeat}</span></div>
+								<div class="statValue"><span>${allStats.players[playerName].nbAttacks}</span> <span class="substat">(${Math.round(allStats.players[playerName].nbAttacks/allStats.players[playerName].nbGames*100)}%)</span> / <span class="greenstat">${allStats.players[playerName].includingSuccess}</span>:<span class="redstat">${allStats.players[playerName].includingDefeat}</span></div>
 							</div>
 						</div>`;
 	const headerName = document.querySelector(`#n${index+1} div.player`);
