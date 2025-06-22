@@ -43,19 +43,34 @@ function isToggled(playerName) {
 // 	// }
 // }
 
+function findPositionInLDBPlayer(playerName) {
+	for(var i = 0 ; i < leaderboard.length ; i++) {
+		if (leaderboard[i][0] == playerName) {
+			return i+1;
+		}
+	}
+	return -1;
+}
+
 
 function togglePlayer(playerName) {
+	// console.log(leaderboard);
 	console.log(playerName);
 	const toggle = document.getElementById(`display${playerName}`).checked;
 	const line = document.getElementById(`line-${playerName}`);
 	const linetext = document.getElementById(`line-text-${playerName}`);
+	const playerLDB = document.getElementById(`n${findPositionInLDBPlayer(playerName)}`);
 	try {
 		if (toggle) {
 			line.classList.remove("invisible");
 			linetext.classList.remove("invisible");
+			playerLDB.style.visibility = "visible";
+			playerLDB.style.display = "inline-flex";
 		} else {
 			line.classList.add("invisible");
 			linetext.classList.add("invisible");
+			playerLDB.style.visibility = "hidden";
+			playerLDB.style.display = "none";
 		}
 	} catch(e) {
 		console.log('player not displayed');
